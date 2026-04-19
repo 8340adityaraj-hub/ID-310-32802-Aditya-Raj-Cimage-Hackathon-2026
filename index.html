@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cimage PlacementAI — Intelligence Engine</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-mark">⬡</span>
+          <span class="logo-text">Placement<em>AI</em></span>
+        </div>
+        <nav class="nav">
+          <button class="nav-btn active" data-page="upload">Upload</button>
+          <button class="nav-btn" data-page="jd">Job Match</button>
+          <button class="nav-btn" data-page="results">Analysis</button>
+          <button class="nav-btn" data-page="recs">Roadmap</button>
+        </nav>
+        <div class="header-tag">Hackathon Build</div>
+      </div>
+    </header>
+
+    <!-- PAGE: UPLOAD -->
+    <section class="page active" id="page-upload">
+      <div class="hero-bar">
+        <div class="hero-text">
+          <p class="overline">AI-Powered · Semantic · Explainable</p>
+          <h1>Placement Intelligence<br/><span class="accent">Engine</span></h1>
+          <p class="sub">Upload your resume. We'll extract, analyze, and map you to roles with semantic precision — not keyword matching.</p>
+        </div>
+        <div class="hero-stat-grid">
+          <div class="stat-box"><div class="stat-num">98%</div><div class="stat-label">Parse Accuracy</div></div>
+          <div class="stat-box"><div class="stat-num">&lt;2s</div><div class="stat-label">Eval Time</div></div>
+          <div class="stat-box"><div class="stat-num">1000+</div><div class="stat-label">Concurrent</div></div>
+          <div class="stat-box"><div class="stat-num">Fair</div><div class="stat-label">Unbiased Score</div></div>
+        </div>
+      </div>
+
+      <div class="upload-area" id="upload-zone">
+        <div class="upload-inner">
+          <div class="upload-icon">↑</div>
+          <div class="upload-title">Drop Resume Here</div>
+          <div class="upload-sub">PDF or DOCX · up to 10MB</div>
+          <label class="upload-btn">
+            Browse File
+            <input type="file" id="resume-file" accept=".pdf,.doc,.docx" hidden />
+          </label>
+          <div class="upload-hint">Or paste raw resume text below</div>
+          <textarea id="resume-text" class="resume-textarea" placeholder="Paste resume text here...&#10;&#10;Name: John Doe&#10;Skills: Python, Machine Learning, React...&#10;Experience: 3 years at TechCorp..."></textarea>
+        </div>
+      </div>
+
+      <div class="parse-section" id="parse-section" style="display:none">
+        <div class="section-label">EXTRACTED PROFILE</div>
+        <div class="parsed-grid" id="parsed-output"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-primary" id="btn-parse">Extract & Analyze Resume</button>
+      </div>
+    </section>
+
+    <!-- PAGE: JD -->
+    <section class="page" id="page-jd">
+      <div class="page-header">
+        <h2>Job Description <span class="accent">Ingestion</span></h2>
+        <p>Paste a job description or pick from our presets. We'll build a semantic skill graph to match against your resume.</p>
+      </div>
+
+      <div class="jd-presets" id="jd-presets">
+        <div class="preset-label">Quick Presets:</div>
+        <button class="preset-btn" data-jd="swe">Software Engineer</button>
+        <button class="preset-btn" data-jd="ml">ML Engineer</button>
+        <button class="preset-btn" data-jd="data">Data Scientist</button>
+        <button class="preset-btn" data-jd="pm">Product Manager</button>
+        <button class="preset-btn" data-jd="devops">DevOps Engineer</button>
+      </div>
+
+      <textarea id="jd-text" class="jd-textarea" placeholder="Paste job description here...&#10;&#10;We are looking for a Software Engineer with experience in..."></textarea>
+
+      <div class="action-row">
+        <button class="btn-secondary" id="btn-back-upload">← Back</button>
+        <button class="btn-primary" id="btn-score">Score & Rank Candidate</button>
+      </div>
+    </section>
+
+    <!-- PAGE: RESULTS -->
+    <section class="page" id="page-results">
+      <div class="page-header">
+        <h2>Candidate <span class="accent">Analysis</span></h2>
+        <p>Multi-factor semantic scoring with explainable AI reasoning.</p>
+      </div>
+
+      <div class="results-grid">
+        <!-- Score card -->
+        <div class="score-card" id="score-card">
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" class="ring-bg"/>
+              <circle cx="60" cy="60" r="52" class="ring-fill" id="ring-fill"/>
+            </svg>
+            <div class="score-inner">
+              <div class="score-num" id="score-num">--</div>
+              <div class="score-label">Match Score</div>
+            </div>
+          </div>
+          <div class="score-verdict" id="score-verdict">Awaiting analysis...</div>
+        </div>
+
+        <!-- Factor breakdown -->
+        <div class="factor-card">
+          <div class="factor-title">Score Breakdown</div>
+          <div class="factors" id="factors-list"></div>
+        </div>
+
+        <!-- Skill graph -->
+        <div class="skills-card">
+          <div class="factor-title">Skill Map</div>
+          <div class="skills-wrap" id="skills-wrap"></div>
+        </div>
+
+        <!-- Gap analysis -->
+        <div class="gap-card">
+          <div class="factor-title">Skill Gap Analysis</div>
+          <div class="gap-content" id="gap-content"></div>
+        </div>
+
+        <!-- Explainability -->
+        <div class="explain-card full-width">
+          <div class="factor-title">AI Reasoning <span class="ai-badge">XAI</span></div>
+          <div class="explain-text" id="explain-text">Loading explanation...</div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-secondary" id="btn-back-jd">← Back</button>
+        <button class="btn-primary" id="btn-recs">Generate Roadmap →</button>
+      </div>
+    </section>
+
+    <!-- PAGE: RECOMMENDATIONS -->
+    <section class="page" id="page-recs">
+      <div class="page-header">
+        <h2>Personalized <span class="accent">Roadmap</span></h2>
+        <p>Your AI-generated preparation plan with courses, projects, and milestones.</p>
+      </div>
+
+      <div class="recs-container" id="recs-container"></div>
+
+      <div class="action-row">
+        <button class="btn-secondary" id="btn-back-results">← Back to Analysis</button>
+        <button class="btn-primary" id="btn-restart">Analyze Another Resume</button>
+      </div>
+    </section>
+
+    <!-- LOADING OVERLAY -->
+    <div class="loading-overlay" id="loading-overlay" style="display:none">
+      <div class="loading-box">
+        <div class="loading-spinner"></div>
+        <div class="loading-msg" id="loading-msg">Processing...</div>
+        <div class="loading-sub" id="loading-sub">Running NLP pipeline...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="parser.js"></script>
+  <script src="scorer.js"></script>
+  <script src="recommender.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
