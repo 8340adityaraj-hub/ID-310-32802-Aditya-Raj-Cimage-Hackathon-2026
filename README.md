@@ -1,64 +1,73 @@
-🧠 PlacementAI
-AI-Powered Placement Intelligence & Resume Analyzer > Transforming the "Black Box" of hiring into a transparent roadmap.
+# 🧠 PlacementAI
+> **AI-Powered Placement Intelligence & Resume Analyzer** > *Transforming the "Black Box" of hiring into a transparent roadmap.*
 
-🚀 Overview
-PlacementAI is a smart decision-support engine that goes beyond simple keyword matching. It understands the semantic context of a resume, calculates a multi-factor score, and provides Explainable AI (XAI) reasoning to help both recruiters and candidates.
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)
+![Build](https://img.shields.io/badge/Build-Hackathon%202026-orange.svg)
 
-Why it’s better than traditional ATS:
-Context Aware: Understands that "React" means "Frontend."
+---
 
-Fast: Processes everything in your browser in <1s.
+## 🚀 Overview
+**PlacementAI** is a smart decision-support engine that goes beyond simple keyword matching. It understands the semantic context of a resume, calculates a multi-factor score, and provides **Explainable AI (XAI)** reasoning to bridge the gap between recruiters and candidates.
 
-Helpful: Identifies skill gaps and suggests real courses.
+### Why it’s better than traditional ATS:
+* **Context Aware:** Uses semantic matching to understand that "React" implies "Frontend Development."
+* **Lightning Fast:** Fully client-side processing in your browser in `<1s`.
+* **Actionable Insights:** Identifies specific skill gaps and suggests real-world courses.
 
-🛠️ Tech Stack
-Core: JavaScript (ES6+), HTML5, CSS3
+---
 
-NLP: TF-IDF Cosine Similarity (Semantic Matching)
+## 🛠️ Tech Stack
+* **Core:** JavaScript (ES6+), HTML5, CSS3
+* **NLP:** TF-IDF & Cosine Similarity for Semantic Matching
+* **AI:** Claude API (Personalized Career Coaching)
+* **Data Structure:** Custom Skill Ontology (60+ Tech nodes)
 
-AI: Claude API (Career Coaching)
+---
 
-Data: Custom Skill Ontology (60+ Tech nodes)
+## 📁 Project Structure
+| File | Role |
+| :--- | :--- |
+| `index.html` | The 4-page responsive Dark-Theme Dashboard. |
+| `parser.js` | Text extraction engine for names, emails, and skills. |
+| `scorer.js` | **The Brain:** Calculates multi-factor scores. |
+| `data.js` | **Knowledge Graph:** Maps skills to specific job roles. |
+| `recommender.js` | Maps skill gaps to curated courses and AI roadmaps. |
 
-📁 Project Structure
-index.html: The 4-page Dark-Theme Dashboard.
+---
 
-parser.js: Extracts names, emails, and skills from messy text.
+## 📊 How Scoring Works
+We move beyond word-counting. PlacementAI utilizes a weighted formula to ensure a holistic evaluation:
 
-scorer.js: The "Brain"—calculates scores based on 6 factors.
+| Factor | Weight | Description |
+| :--- | :--- | :--- |
+| **Skills** | 38% | Direct and related semantic skill matches. |
+| **Experience** | 22% | Years of professional work vs. job requirements. |
+| **Semantic** | 20% | Mathematical similarity (Cosine) of the text. |
+| **Education** | 10% | Degree level and GPA relevance. |
+| **Projects** | 7% | Breadth and depth of technical implementation. |
+| **Certs** | 3% | Relevant industry-recognized certifications. |
 
-data.js: The "Knowledge Graph" of skills and job roles.
+---
 
-recommender.js: Maps skill gaps to courses and AI roadmaps.
+## 🔧 Getting Started
+Since PlacementAI is built for efficiency, there is **zero installation** required.
 
-📊 How Scoring Works
-We don't just count words. We use a weighted formula:
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/8340adityaraj-hub/ID-310-32802-Aditya-Raj-Cimage-Hackathon-2026.git](https://github.com/8340adityaraj-hub/ID-310-32802-Aditya-Raj-Cimage-Hackathon-2026.git)
+    ```
+2.  **Run the App:**
+    Simply open `index.html` in any modern web browser.
 
-Skills (38%): Direct and related skill matches.
+---
 
-Experience (22%): Years of work vs. Job requirements.
+## 🔮 Future Roadmap
+* **GitHub Integration:** Automatic project verification and contribution analysis via API.
+* **Voice Bot:** AI-driven mock interviews to prep candidates.
+* **Production Upgrade:** Migrating the backend to **FastAPI** and **Sentence-BERT**.
 
-Semantic (20%): Mathematical similarity of the text.
+---
 
-Education (10%): Degree level and GPA.
-
-Projects (7%): Breadth and depth of technical work.
-
-Certs (3%): Relevant industry certifications.
-
-🔧 How to Run
-Clone the repository.
-
-Open index.html in any modern web browser.
-
-No installation required! (Client-side execution).
-
-🔮 Future Roadmap
-GitHub Integration: Automatic project verification via API.
-
-Voice Bot: AI-driven mock interviews for candidates.
-
-Server-Side Upgrade: Migrating to FastAPI and Sentence-BERT for production.
-
-👨‍💻 Developed by
-Team PlacementAI Built for Hackathon 2026
+## 👨‍💻 Developed by
+**Team PlacementAI** *Built for Cimage Hackathon 2026*
